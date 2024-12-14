@@ -3,7 +3,7 @@
   <head>
     <title>RPS Fun Gaming</title>
     <style>
-      .b1{
+      .buttonRock{
         background-color: #383b3a; 
         border: none;
         color: white;
@@ -16,7 +16,7 @@
         cursor: pointer;
       }
 
-      .b2{
+      .buttonPaper{
         background-color: #f6f6f6; 
         border: none;
         color: rgb(0, 0, 0);
@@ -29,7 +29,7 @@
         cursor: pointer;
       }
 
-      .b3{
+      .buttonScissor{
         background-color: #5aa0cc; 
         border: none;
         color: rgb(0, 0, 0);
@@ -42,7 +42,7 @@
         cursor: pointer;
       }
 
-      .b4{
+      .buttonReset{
         background-color: #881010; 
         border: none;
         color: rgb(255, 255, 255);
@@ -59,38 +59,45 @@
   <body>
 
     <p>Rock Paper Scissors</p>
-    <button class="b1" onclick="
+    <button class="buttonRock" onclick="
      gamePlay('Rock');
     ">Rock</button>
 
-    <button class="b2" onclick="
+    <button class="buttonPaper" onclick="
      gamePlay('Paper');
     ">Paper</button>
 
-    <button class="b3" onclick="
+    <button class="buttonScissor" onclick="
      gamePlay('Scissor');
     ">Scissor</button>
 
-    <button class="b4" onclick="
+    <p class="result"></p>
+
+    <p class="Move"></p>
+
+    <p class="score"></p>
+
+    <button class="buttonReset" onclick="
       score.Wins = 0, 
       score.Losses=0, 
       score.Ties =0
-
       localStorage.removeItem('score');
-
-      alert(`Wins: ${score.Wins}
-Losses: ${score.Losses}
-Ties: ${score.Ties}`);
-
+      
+      display();
+      document.querySelector('.Move').innerText = 'Play Now';
+      document.querySelector('.result').innerText = '';
     ">Reset Score</button>
 
+
     <script>
+      
       let score = JSON.parse( localStorage.getItem('score')) || {
        Wins : 0,
        Losses :0,
        Ties : 0
       };
-
+      display(); 
+      
 
       function gamePlay(playerMove){
         
@@ -142,15 +149,14 @@ Ties: ${score.Ties}`);
 
         localStorage.setItem('score', JSON.stringify(score));
         
-        
+        document.querySelector('.result').innerText = result;
+        document.querySelector('.Move').innerText = `You - ${playerMove} & Computer - ${compuermove}`;
+        display();
+      }
 
-        alert(`You picked ${playerMove}, Computer picked ${compuermove}, The Final Result is..
-${result} 
-        
-        Wins: ${score.Wins}
-        Losses: ${score.Losses}
-        Ties: ${score.Ties}`); //Displaying the output 
-
+      //Defining function for display inline 
+      function display(){
+        document.querySelector('.score').innerText = `Wins :${score.Wins}, Looses :${score.Losses}, Ties :${score.Ties}`;
       }
 
       //Defining function for automation of computer side pick
