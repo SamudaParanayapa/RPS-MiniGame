@@ -1,0 +1,51 @@
+      /* Define custom font using @font-face */
+      @font-face{
+        font-family: Myfont;
+        src: url(TitleFont.ttf);
+      }
+      /* General body styling for dark background and white text */
+      body{
+        background-color: black;
+        color: white;
+      }
+      /* Title styling using custom font */
+      .title{
+        font-family: Myfont;
+        font-weight: lighter;
+        font-size: xx-large;
+        margin-top: 20px;
+      }
+       /* Image styling for the buttons */
+      .buttonImg{
+        height: 100px;
+      }
+      /* Styling for the play buttons */
+      .playButtons{
+        background-color: transparent;
+        border: 2px solid white;
+        border-radius: 60px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      /* Styling for the result display text */
+      .result{
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 50px;
+        margin-bottom: 30px;
+      }
+      .buttonReset{
+        background-color: rgb(142, 28, 28);
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border: 1px solid white;
+        border-radius: 60px;
+        cursor: pointer;
+      }
+      .score{
+        font-size: 20px;
+        margin-top: 30px;
+      }
